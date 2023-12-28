@@ -24,17 +24,3 @@ class Rate(models.Model):
             MaxValueValidator(5),
         ),
     )
-
-
-class Popular(models.Model):
-    car_id = models.ForeignKey(
-        Car,
-        on_delete=models.CASCADE,
-        related_name='popular',
-        verbose_name='ID автомобиля'
-        )
-    rates_number = models.ForeignKey(
-        Rate,
-        on_delete=models.CASCADE,
-        related_name='popular',
-        verbose_name='Рейтинг')

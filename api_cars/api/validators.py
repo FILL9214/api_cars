@@ -9,6 +9,8 @@ result = json.dumps(obj)
 
 
 def validate_car(make):
+    """Проверка существования автомобиля
+    на сайте https://vpic.nhtsa.dot.gov/api/"""
     if make not in result.split('"'):
         raise ValidationError(
             'Такого автомобиля не существует!\
