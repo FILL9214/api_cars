@@ -7,14 +7,14 @@
 
 Переименовать .env.example в .env и заполнить своими данными по шаблону:
 
-```
+```bash
 mv .env.example .env
 nano .env
 ```
 
 Убедиться, что сервис (демон) Docker активен в системе:
 
-```
+```bash
 sudo systemctl status docker
 ```
 
@@ -25,11 +25,10 @@ sudo systemctl status docker
 - необходимо открыть docker-compose.yml и заменить для каждого из контейнеров `backend`, `gateway` способ выбора образа с `image` на `build` - таким образом будут созданы исходные docker образы проекта
 - далее возможно создать свои образы `backend`, `gateway` и использовать параметр `image`
 
-```
+```bash
 nano docker-compose.yml
 ```
 ```
-....
 backend:
    ...
    # эту строку ниже:
@@ -46,27 +45,35 @@ gateway:
    ...
 ```
 
-Развернуть контейнерную группу в виде фоновоного демона:
-
+## Запуск проекта 
+### Заполнить в настройках репозитория секреты .env, необходимы для работы postgres в docker 
+ 
+```python 
+POSTGRES_DB=db_name # Задаем имя для БД. 
+POSTGRES_USER=username # Задаем пользователя для БД. 
+POSTGRES_PASSWORD=password # Задаем пароль для БД. 
+DB_HOST=db 
+DB_PORT=5432 
+``` 
+ 
+### Далее в папке api_cars выполняем команду: 
+ 
+```bash 
+sudo docker compose -f docker-compose.production.yml up -d --build 
+``` 
+ 
+ 
+### Для доступа к контейнеру backend и сборки финальной части выполняем следующие команды: 
+ 
+```bash 
+docker-compose exec backend python manage.py makemigrations 
+``` 
+ 
+```bash docker-compose exec backend
+ python manage.py migrate
 ```
-docker compose up -d
-```
+## Примеры работы программы:
 
-Настроить миграции backend:
-
-```
-docker compose exec backend python manage.py migrate
-```
-
-Передать статику в Nginx:
-
-```
-docker compose exec backend python manage.py collectstatic
-docker compose exec backend cp -r /kittygram/collect_static/. /backend_static/static/
-```
-
-Настроить сервер на отпраку запросов к сайту Cars на порт 8000 (согласно настройке образа `gateway`).
 
 ### Автор
-
 Филипп Истомин

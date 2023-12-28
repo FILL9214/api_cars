@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-$pb%5(e(f1rjor^x5smav+q6x&_#v2yh1q^$5!nes-@#mv@z(s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['api-cars.myddns.me', '62.84.123.36', '127.0.0.1', 'localhost']
 
 
 # Application definition

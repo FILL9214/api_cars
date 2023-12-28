@@ -1,0 +1,19 @@
+version: '3.9'
+
+volumes:
+  db_data:
+
+services:
+  postgres_db:
+    image: postgres:13
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    env_file: .env  
+  backend:
+    image: fill9214/cars_backend
+    env_file: .env
+  gateway:
+    image: fill9214/cars_gateway
+    env_file: .env
+    ports:
+      - 8000:80

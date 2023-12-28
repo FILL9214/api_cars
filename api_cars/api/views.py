@@ -9,6 +9,7 @@ class CarViewSet(viewsets.ModelViewSet):
         avg_rating=Avg('rate__rating'))
     serializer_class = CarSerializer
     filter_backends = (filters.OrderingFilter,)
+    ordering = ('id',)
 
 
 class RateViewSet(viewsets.ModelViewSet):
