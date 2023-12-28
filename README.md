@@ -73,6 +73,18 @@ docker-compose exec backend python manage.py makemigrations
  python manage.py migrate
 ```
 ## Примеры работы программы:
+### Вывод всех автомобилей со средним рейтингом
+![image](https://github.com/FILL9214/api_cars/assets/97111713/d04e21a3-e6e5-4550-928d-334deb0008a3)
+
+### Вывод популярных автомобилей
+![image](https://github.com/FILL9214/api_cars/assets/97111713/d4be43b2-a5e4-4192-b243-be9c480437d8)
+### Добавление оценки автомобилю
+![image](https://github.com/FILL9214/api_cars/assets/97111713/ef6a5146-7859-4a9b-ac58-c8b857bcacba)
+
+### Создание автомобиля, при условии его нахождения в базе по URL https://vpic.nhtsa.dot.gov/api/
+![image](https://github.com/FILL9214/api_cars/assets/97111713/af37f8b2-a98d-497c-b476-c6ac5ca988b0)
+
+![image](https://github.com/FILL9214/api_cars/assets/97111713/c7f3bc9f-bc7a-4e2f-9519-f1498434c8d8)
 
 
 ### Автор
