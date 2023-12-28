@@ -1,0 +1,19 @@
+version: '3.9'
+
+volumes:
+  db_data:
+
+services:
+  postgres_db:
+    image: postgres:13.0-alpine
+    volumes:
+      - db_data:/var/lib/postgresql/data/ 
+    env_file: .env  
+  backend:
+    build: ./api_cars/
+    env_file: .env
+  gateway:
+    build: ./nginx/
+    env_file: .env
+    ports:
+      - 8000:80
