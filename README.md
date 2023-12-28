@@ -69,8 +69,8 @@ sudo docker compose -f docker-compose.production.yml up -d --build
 docker-compose exec backend python manage.py makemigrations 
 ``` 
  
-```bash docker-compose exec backend
- python manage.py migrate
+```bash
+sudo docker compose -f docker-compose.production.yml exec backend python manage.py migrate
 ```
 ## Примеры работы программы:
 ### Вывод всех автомобилей со средним рейтингом
